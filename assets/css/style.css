@@ -726,82 +726,144 @@ section {
 /*--------------------------------------------------------------
 # Menu Section
 --------------------------------------------------------------*/
-.menu #menu-flters {
-  padding: 0;
-  margin: 0 auto 0 auto;
-  list-style: none;
-  text-align: center;
-  border-radius: 50px;
-}
+ .menu #menu-flters {
+            padding: 0;
+            margin: 0 auto 20px auto; /* Adicionado margin-bottom para separar dos cabeçalhos/itens */
+            list-style: none;
+            text-align: center;
+            border-radius: 50px;
+        }
 
-.menu #menu-flters li {
-  cursor: pointer;
-  display: inline-block;
-  padding: 8px 16px 10px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1;
-  color: #444444;
-  margin: 0 3px 10px 3px;
-  transition: all ease-in-out 0.3s;
-  background: white;
-  border: 2px solidred;
-  border-radius: 50px;
-}
+        .menu #menu-flters li {
+            cursor: pointer;
+            display: inline-block;
+            padding: 8px 16px 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1;
+            color: #444444;
+            margin: 0 3px 10px 3px;
+            transition: all ease-in-out 0.3s;
+            background: white;
+            border: 2px solid red;
+            border-radius: 50px;
+        }
 
-.menu #menu-flters li:hover,
-.menu #menu-flters li.filter-active {
-  color: white;
-  background:red;
-}
+        .menu #menu-flters li:hover,
+        .menu #menu-flters li.filter-active {
+            color: white;
+            background: red;
+        }
 
-.menu #menu-flters li:last-child {
-  margin-right: 0;
-}
+        .menu #menu-flters li:last-child {
+            margin-right: 0;
+        }
 
-.menu .menu-content {
-  margin-top: 30px;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
+        .menu .menu-content {
+            /* margin-top: 30px; */ /* Removido ou ajustado, pois os cabeçalhos agora estão dentro do container */
+            /* O espaçamento vertical será controlado pelo margin-bottom dos cabeçalhos e pelo margin-top dos menu-item */
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            position: relative;
+        }
 
-.menu .menu-content::after {
-  content: "......................................................................" "...................................................................." "....................................................................";
-  position: absolute;
-  left: 20px;
-  right: 0;
-  top: -4px;
-  z-index: 1;
-  color: #dad8d4;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-}
+        .menu .menu-content::after {
+            content: "......................................................................" "...................................................................." "....................................................................";
+            position: absolute;
+            left: 20px;
+            right: 0;
+            top: -4px;
+            z-index: 1;
+            color: #dad8d4;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            pointer-events: none;
+        }
 
-.menu .menu-content a {
-  padding-right: 10px;
-  background: white;
-  position: relative;
-  z-index: 3;
-  font-weight: 700;
-  color: #ff9b08;
-}
+        .menu .menu-content a {
+            padding-right: 10px;
+            background: white;
+            position: relative;
+            z-index: 3;
+            font-weight: 700;
+            color: #ff9b08;
+            flex-shrink: 0;
+        }
 
-.menu .menu-content span {
-  background: white;
-  position: relative;
-  z-index: 3;
-  padding: 0 10px;
-  font-weight: 600;
-}
+        .menu .menu-ingredients {
+            font-style: italic;
+            font-size: 14px;
+            font-family: "Comic Neue", sans-serif;
+            color: #948c81;
+            padding-left: 0;
+            margin-top: 2px;
+        }
 
-.menu .menu-ingredients {
-  font-style: italic;
-  font-size: 14px;
-  font-family: "Comic Neue", sans-serif;
-  color: #948c81;
-}
+        /* Estilos para os Cabeçalhos de Preço (agora dentro do menu-container e filtráveis) */
+        .menu .menu-container .menu-price-column-headers.filter-pizzas {
+            /* Esta div é um col-12, então a row interna lida com o grid dos cabeçalhos */
+            margin-bottom: 15px; /* Espaço ENTRE os cabeçalhos e o PRIMEIRO item de pizza */
+            padding-left: 0; /* Ajustar se as colunas internas tiverem padding inesperado */
+            padding-right: 0; /* Ajustar se as colunas internas tiverem padding inesperado */
+        }
 
+        .menu .menu-price-column-headers .price-header-group {
+            display: flex;
+            justify-content: flex-end;
+            background: white;
+            position: relative;
+            z-index: 2; /* Abaixo dos itens de menu, mas acima do ::after */
+        }
+
+        .menu .menu-price-column-headers .price-header {
+            font-weight: 700;
+            text-align: center;
+            width: 75px; /* AJUSTE CONFORME NECESSÁRIO */
+            padding: 0 5px;
+            box-sizing: border-box;
+            color: #333333;
+            font-size: 14px;
+        }
+        
+        /* Ajuste para os itens do menu para terem um espaçamento superior consistente */
+        .menu .menu-container > .menu-item {
+            margin-top: 20px; /* Espaçamento acima de cada item do menu */
+        }
+        
+        /* Se os cabeçalhos estiverem visíveis, o primeiro item de pizza não precisa de tanta margem superior */
+        .menu .menu-container .menu-price-column-headers.filter-pizzas + .menu-item.filter-pizzas {
+            margin-top: 0; /* Remove a margem do primeiro item de pizza APÓS os cabeçalhos */
+        }
+
+        .menu .menu-content .price-details {
+            display: flex;
+            background: white;
+            position: relative;
+            z-index: 3;
+            margin-left: 10px;
+        }
+
+        .menu .menu-content .price-value {
+            font-weight: 600;
+            text-align: center;
+            width: 75px; /* DEVE SER IGUAL à largura do .price-header. AJUSTE. */
+            padding: 0 5px;
+            box-sizing: border-box;
+            color: #444444;
+            line-height: inherit;
+        }
+
+        .menu .menu-content > span:not([class]) {
+            background: white;
+            position: relative;
+            z-index: 3;
+            padding: 0 10px;
+            font-weight: 600;
+            color: #444444;
+        }
+
+    
 /*--------------------------------------------------------------
 # Specials
 --------------------------------------------------------------*/

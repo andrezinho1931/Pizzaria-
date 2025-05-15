@@ -181,9 +181,9 @@
     let menuContainer = select('.menu-container');
     if (menuContainer) {
       let menuIsotope = new Isotope(menuContainer, {
-        itemSelector: '.menu-item',
+        itemSelector: '.menu-item, .menu-price-column-headers',
         layoutMode: 'fitRows',
-        filter: '.filter-starters' //adicionei para que apareca pizzas ao atualizar a pagina
+        filter: '.filter-starters' //adicionei para que apareca pizzas ao atualizar a pagina, para nao ficar apenas o titulos "bebidas","pizza"
       });
 
       let menuFilters = select('#menu-flters li', true);
